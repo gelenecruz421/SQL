@@ -1,0 +1,25 @@
+--Create a Fashion Store Database
+
+CREATE TABLE gels_fashion (id INTEGER PRIMARY KEY, name TEXT, size TEXT, price INTEGER, quantity INTEGER);
+
+INSERT INTO gels_fashion VALUES (1, "tops", "S", 100, 1);
+INSERT INTO gels_fashion VALUES (2, "tops", "M", 100, 3);
+INSERT INTO gels_fashion VALUES (3, "tops", "L", 100, 2);
+INSERT INTO gels_fashion VALUES (4, "bottoms", "S", 150, 3);
+INSERT INTO gels_fashion VALUES (5, "bottoms", "M", 150, 2);
+INSERT INTO gels_fashion VALUES (6, "bottoms", "L", 150, 1);
+INSERT INTO gels_fashion VALUES (7, "dress", "S", 300, 2);
+INSERT INTO gels_fashion VALUES (8, "dress", "M", 300, 1);
+INSERT INTO gels_fashion VALUES (9, "dress", "L", 300, 1);
+INSERT INTO gels_fashion VALUES (10, "earrings", "00", 50, 8);
+INSERT INTO gels_fashion VALUES (11, "necklace", "16", 25, 11);
+INSERT INTO gels_fashion VALUES (12, "necklace", "18", 26, 15);
+INSERT INTO gels_fashion VALUES (13, "bracelet", "7", 22, 23);
+INSERT INTO gels_fashion VALUES (14, "bracelet", "8", 23, 21);
+INSERT INTO gels_fashion VALUES (15, "ring", "00", 18, 8);
+
+SELECT * FROM gels_fashion ORDER BY id AND price ASC;
+SELECT AVG(price) "Average Price Per Item" FROM gels_fashion where name = 'tops';
+SELECT name, size, quantity FROM gels_fashion ORDER BY quantity;
+
+   
