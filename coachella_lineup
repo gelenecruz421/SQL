@@ -1,0 +1,34 @@
+CREATE TABLE coachella_lineup (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, year REAL);
+
+INSERT INTO coachella_lineup (name, year) VALUES ("childish gambino", 2012);
+INSERT INTO coachella_lineup (name, year) VALUES ("santigold", 2012);
+INSERT INTO coachella_lineup (name, year) VALUES ("kendrick lamar", 2012);
+INSERT INTO coachella_lineup (name, year) VALUES ("miike snow", 2012);
+INSERT INTO coachella_lineup (name, year) VALUES ("phoenix", 2013);
+INSERT INTO coachella_lineup (name, year) VALUES ("haim", 2014);
+INSERT INTO coachella_lineup (name, year) VALUES ("years & years", 2014);
+INSERT INTO coachella_lineup (name, year) VALUES ("acdc", 2015);
+INSERT INTO coachella_lineup (name, year) VALUES ("lcd soundsystem", 2017);
+INSERT INTO coachella_lineup (name, year) VALUES ("beyonce", 2018);
+INSERT INTO coachella_lineup (name, year) VALUES ("lady gaga", 2017);
+
+CREATE TABLE music_genre (artist_id INTEGER, genre TEXT);
+
+INSERT INTO music_genre (artist_id, genre) VALUES (1, "hiphop");
+INSERT INTO music_genre (artist_id, genre) VALUES (2
+, "hiphop");
+INSERT INTO music_genre (artist_id, genre) VALUES (3, "hiphop");
+INSERT INTO music_genre (artist_id, genre) VALUES (4, "indie rock");
+INSERT INTO music_genre (artist_id, genre) VALUES (5, "indie rock");
+INSERT INTO music_genre (artist_id, genre) VALUES (6, "indie rock");
+INSERT INTO music_genre (artist_id, genre) VALUES (7, "indie rock");
+INSERT INTO music_genre (artist_id, genre) VALUES (8, "indie rock");
+INSERT INTO music_genre (artist_id, genre) VALUES (9, "indie rock");
+INSERT INTO music_genre (artist_id, genre) VALUES (10, "pop");
+INSERT INTO music_genre (artist_id, genre) VALUES (11, "pop");
+
+
+SELECT name, genre, year FROM coachella_lineup
+    JOIN music_genre
+    ON music_genre.artist_id = coachella_lineup.id
+    ORDER BY year desc;
