@@ -1,0 +1,7 @@
+SELECT * FROM FebSales;
+
+SELECT product, quantity FROM FebSales;
+
+SELECT product, SUM(quantity) as total FROM FebSales
+ WHERE location LIKE '%los Angeles%'
+ GROUP BY product
