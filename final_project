@@ -1,0 +1,76 @@
+
+SELECT firstname, lastname, customerID, country FROM customers
+    WHERE country <> "USA";
+    
+SELECT firstname, lastname, customerID, country FROM customers
+    WHERE country = "Brazil"
+
+SELECT customers.FirstName, customers.LastName, invoices.InvoiceId, invoices.InvoiceDate
+FROM customers
+LEFT JOIN invoices ON customers.CustomerId = invoices.CustomerId;
+
+SELECT firstname, lastname, title FROM employees
+    WHERE title = "Sales Support Agent";
+    
+SELECT DISTINCT BillingCountry FROM invoices;
+
+SELECT employees.FirstName || ' ' || employees.LastName AS SalesAgentFullName, invoices.InvoiceId
+    FROM employees
+    JOIN customers ON customers.SupportRepId = employees.EmployeeId 
+    JOIN invoices ON invoices.CustomerId = customers.CustomerId
+    WHERE title = "Sales Support Agent"
+   
+
+SELECT  
+    invoices.Total AS total_invoices,
+    customers.FirstName || ' ' || customers.LastName AS CustomersFullName,
+    customers.Country,
+    employees.FirstName || ' ' || employees.LastName AS EmployeeName 
+FROM invoices
+JOIN customers ON invoices.CustomerId = customers.CustomerId
+JOIN employees ON employees.EmployeeId = customers.SupportRepId
+ORDER BY CustomersFullName;
+
+SELECT COUNT (*) AS InvoiceCount
+    FROM invoices
+     WHERE InvoiceDate >= '2009-01-01 00:00:00'  
+     AND InvoiceDate <'2010-01-01 00:00:00';
+     
+SELECT SUM(total) as TotalSales FROM invoices
+    WHERE InvoiceDate >= '2009-01-01 00:00:00'  
+     AND InvoiceDate <'2010-01-01 00:00:00';
+     
+SELECT tracks.name as purchased_track_name, invoice_items.InvoiceLineId
+    FROM tracks
+    JOIN invoice_items ON tracks.TrackId = invoice_items.TrackId;
+    
+SELECT tracks.Name as purchased_track_name, artists.Name as artist_name, invoice_items.InvoiceLineId
+    FROM tracks
+    JOIN invoice_items on tracks.TrackId = invoice_items.TrackId
+    JOIN albums on tracks.AlbumId = albums.AlbumId
+    JOIN artists on albums.ArtistId = artists.ArtistId
+    GROUP BY purchased_track_name
+    ORDER BY InvoiceLineID asc
+    
+SELECT albums.Title as AlbumName, tracks.Name as Song, media_types.Name as MediaType, genres.Name as Genre
+    FROM albums
+    JOIN tracks on tracks.AlbumId = albums.AlbumId
+    JOIN media_types on media_types.MediaTypeId = tracks.MediaTypeId
+    JOIN genres on genres.GenreId = tracks.GenreId
+    GROUP BY song
+    
+SELECT employees.FirstName || ' ' || employees.LastName AS SalesAgentName,
+    SUM(invoices.Total) AS TotalSales
+    FROM invoices
+    JOIN customers on invoices.CustomerId = customers.CustomerId
+    JOIN employees on customers.SupportRepId = employees.EmployeeId
+    GROUP BY SalesAgentName
+    
+SELECT employees.FirstName || ' ' || employees.LastName AS SalesAgentName,
+    SUM(invoices.Total) AS TotalSales
+    FROM invoices
+    JOIN customers on invoices.CustomerId = customers.CustomerId
+    JOIN employees on customers.SupportRepId = employees.EmployeeId
+    GROUP BY SalesAgentName
+    LIMIT 1
+    
