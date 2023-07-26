@@ -1,0 +1,17 @@
+SELECT * from fortune_companies
+
+SELECT company_name, industry, paid_time_off_days,
+CASE WHEN paid_time_off_days>=15 THEN "AWESOME"
+WHEN paid_time_off_days>=10 THEN "MEH"
+ELSE "EH"
+END AS should_i_work_here
+FROM fortune_companies
+ORDER BY paid_time_off_days desc
+
+SELECT * from fortune_companies
+WHERE paid_time_off_days >=15
+AND healthcare_benefits = 1
+ORDER BY healthcare_benefits;
+
+SELECT company_name, ROUND(revenue) as rounded_revenue
+FROM fortune_companies;
